@@ -1,4 +1,4 @@
-import aiohttp, configparser, asyncio, json
+import aiohttp, configparser, asyncio, json, pprint
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -7,16 +7,27 @@ class shopify():
     def __init__(self, url):
         self.products = dict()
         self.site = url
-        self.uri = config['shopify']['dataloc']
-        self.url = f"{self.site}{self.uri}"
+        self.storeuri = config['shopify']['dataloc']
+        self.storeurl = f"{self.site}{self.storeuri}"
+        self.producturi = config['shopify']['itemloc']
+        self.producturl = f"{self.site}{self.producturi}"
 
     async def crawl(self):
         async with aiohttp.ClientSession() as session:
-            try:
-                async with session.get(self.url) as r:
+            async with session.get(self.storeurl) as r:
+                if r.status == 200:
                     self.text = await r.text()
-            except:
-                print('oopsie woopsie')
+                else:
+                    print(f"[ERROR] Request returned unexpected value: Status {r.status}, expected 200")
 
     async def loadProducts(self):
         self.products = json.loads(self.text)['products']
+        for product in self.products:
+            self.products.append({'name': product['title'], 'url': f"{self.producturl}{product['product_id']}"})
+
+async def test():
+    await shopify.crawl()
+    await shopify.loadProducts()
+
+shopify = shopify('https://dailyclack.com')
+asyncio.run(test())
