@@ -5,7 +5,7 @@ config.read('config.ini')
 
 class shopify():
     def __init__(self, url):
-        self.products = dict()
+        self.products = []
         self.site = url
         self.storeuri = config['shopify']['dataloc']
         self.storeurl = f"{self.site}{self.storeuri}"
@@ -21,9 +21,10 @@ class shopify():
                     print(f"[ERROR] Request returned unexpected value: Status {r.status}, expected 200")
 
     async def loadProducts(self):
-        self.products = json.loads(self.text)['products']
-        for product in self.products:
+        products = json.loads(self.text)['products']
+        for product in products:
             self.products.append({'name': product['title'], 'url': f"{self.producturl}{product['product_id']}"})
+        print(self.products)
 
 async def test():
     await shopify.crawl()
