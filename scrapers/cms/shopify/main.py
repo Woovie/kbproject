@@ -24,11 +24,3 @@ class shopify():
         products = json.loads(self.text)['products']
         for product in products:
             self.products.append({'name': product['title'], 'url': f"{self.producturl}{product['product_id']}"})
-        print(self.products)
-
-async def test():
-    await shopify.crawl()
-    await shopify.loadProducts()
-
-shopify = shopify('https://dailyclack.com')
-asyncio.run(test())
