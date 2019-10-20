@@ -1,4 +1,4 @@
-import aiohttp, configparser, oembed, asyncio
+import aiohttp, configparser, asyncio, json
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -10,10 +10,12 @@ class shopify():
         self.uri = config['shopify']['dataloc']
         self.url = f"{self.site}{self.uri}"
 
-    async def crawl():
+    async def crawl(self):
         async with aiohttp.ClientSession() as session:
-            async with session.get(self.url) as r:
-                print(r)
+            try:
+                async with session.get(self.url) as r:
+            except:
+                self.text = await r.text()
 
-shopify = shopify('https://dailyclack.com')
-asyncio.run(shopify.crawl())
+    async def loadProducts(self):
+        self.products = json.loads(self.text)['products']
