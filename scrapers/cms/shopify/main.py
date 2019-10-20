@@ -14,8 +14,9 @@ class shopify():
         async with aiohttp.ClientSession() as session:
             try:
                 async with session.get(self.url) as r:
+                    self.text = await r.text()
             except:
-                self.text = await r.text()
+                print('oopsie woopsie')
 
     async def loadProducts(self):
         self.products = json.loads(self.text)['products']
