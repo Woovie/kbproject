@@ -1,6 +1,14 @@
 # kbproject
 An open source, free custom keyboard vendor and inventory repository
 
+Kanban
+
+https://trello.com/b/8MnLk6bD/kbproject
+
+Research and documentation
+
+https://paper.dropbox.com/doc/kbproject--AnDC3sPPdlXvBJAWPDGWXOrqAQ-1f3P4aRWfF8JkzJkBFZkp
+
 ## Why
 So, the keyboard community has a massive amount of vendors. Each vendor chooses their software, their design, their server. The end result is a confusing, obtuse process to try and find products. Want a 60% plate? Check the 50+ vendors in the community to see who sells one.
 
