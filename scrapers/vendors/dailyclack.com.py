@@ -7,12 +7,15 @@ sys.path.insert(1, shopifyPath)
 
 from shopify import shopify
 
+companyName = 'Daily Clack'
 site = 'https://dailyclack.com'
+referralCode = ''
 
 async def main():
     await shopify.crawl()
     await shopify.loadProducts()
-    print(shopify.products)
+    for entry in shopify.resp.entries:
+        print(entry.title.value)
 
 shopify = shopify(site)
 asyncio.run(main())
