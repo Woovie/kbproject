@@ -1,26 +1,47 @@
-import aiohttp, configparser, asyncio, json, pprint
+import aiohttp, configparser, asyncio, bs4
 
 config = configparser.ConfigParser()
 config.read('config.ini')
 
 class shopify():
     def __init__(self, url):
+        self.productsBS = []
         self.products = []
         self.site = url
-        self.storeuri = config['shopify']['dataloc']
-        self.storeurl = f"{self.site}{self.storeuri}"
-        self.producturi = config['shopify']['itemloc']
-        self.producturl = f"{self.site}{self.producturi}"
+        self.initStoreURI = config['shopify']['dataloc']
+        self.productURI = config['shopify']['itemloc']
 
-    async def crawl(self):
-        async with aiohttp.ClientSession() as session:
-            async with session.get(self.storeurl) as r:
-                if r.status == 200:
-                    self.text = await r.text()
-                else:
-                    print(f"[ERROR] Request returned unexpected value: Status {r.status}, expected 200")
+    async def parseStorePage(self, url):
+        print(url)
+        resp = await crawl(url)
+        resp = bs4.BeautifulSoup(resp, 'html5lib')
+        self.productsBS.extend(resp.find_all(class_='product-card'))
+        nextPage = resp.find(rel='next')
+        if nextPage:
+            await self.parseStorePage(f"{self.site}{nextPage.get('href')}")
 
     async def loadProducts(self):
-        products = json.loads(self.text)['products']
-        for product in products:
-            self.products.append({'name': product['title'], 'url': f"{self.producturl}{product['product_id']}"})
+        for product in self.productsBS:
+            productArray = {}
+            uri = product.get('href')
+            productArray['uri'] = uri
+            productArray['url'] = f"{self.site}{uri}"
+            productArray['name'] = product.find(class_="product-card__name").text
+            price = product.find(class_="product-card__price")
+            soldOut = product.find(class_="product-card__availability")
+            if soldOut:
+                productArray['price'] = "None"
+                productArray['availability'] = False
+            else:
+                productArray['price'] = " ".join(price.text.split()).replace("Regular price ", "").replace("From ", "")
+                productArray['availability'] = True
+            self.products.append(productArray)
+
+
+async def crawl(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as r:
+            if r.status == 200:
+                return await r.text()
+            else:
+                raise ResponseError(f"[ERROR] GET {url} returned unexpected value: {r.status} {r.reason}, expected 200 OK")
