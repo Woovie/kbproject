@@ -1,4 +1,4 @@
-import aiohttp, configparser, asyncio, bs4
+import configparser, bs4
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -36,12 +36,3 @@ class shopify():
                 productArray['price'] = " ".join(price.text.split()).replace("Regular price ", "").replace("From ", "")
                 productArray['availability'] = True
             self.products.append(productArray)
-
-
-async def crawl(url):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as r:
-            if r.status == 200:
-                return await r.text()
-            else:
-                raise ResponseError(f"[ERROR] GET {url} returned unexpected value: {r.status} {r.reason}, expected 200 OK")
