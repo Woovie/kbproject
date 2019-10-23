@@ -3,24 +3,22 @@
 import json, asyncio
 
 #My custom modules
-import vendors
+import baseVendors, baseCMS
 
 #CMS list
-import cms.shopify.shopify
+import cms.shopify.main
 
 vendors = []
 
 cms = []
 
 async def main():
-    await loadVendors()
-    await loadCMS()
-    for vendor in vendors:
-        print(vendor['cms'])
-
-async def loadCMS():
+    global vendors
     global cms
-    with open('cms.json', 'r') as f:
-        cms = json.load(f)
+    vendors = await baseVendors.loadVendors()
+    cms = await baseCMS.loadCMS()
+    for vendor in vendors:
+        ven = baseVendors.vendor(vendor['vendorName'], vendor['vendorURL'], vendor['cms'], vendor['scrape'])#name, url, cms, active
+
 
 asyncio.run(main())
