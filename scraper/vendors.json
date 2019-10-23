@@ -1,0 +1,50 @@
+[
+    {
+        "vendorName": "Daily Clack",
+        "vendorURL": "https://dailyclack.com",
+        "cms": "shopify",
+        "scrape": true
+    },
+    {
+        "vendorName": "Little Keyboards",
+        "vendorURL": "https://littlekeyboards.com",
+        "cms": "shopify",
+        "scrape": true
+    },
+    {
+        "vendorName": "iLumkb",
+        "vendorURL": "https://ilumkb.com",
+        "cms": "shopify",
+        "scrape": true
+    },
+    {
+        "vendorName": "Teal Technik",
+        "vendorURL": "https://tealtechnik.com",
+        "cms": "shopify",
+        "scrape": true
+    },
+    {
+        "vendorName": "MKUltra Corporation",
+        "vendorURL": "https://mkultra.click",
+        "cms": "shopify",
+        "scrape": true
+    },
+    {
+        "vendorName": "DESKHERO",
+        "vendorURL": "https://www.deskhero.ca",
+        "cms": "shopify",
+        "scrape": true
+    },
+    {
+        "vendorName": "Switchmod Keyboards",
+        "vendorURL": "https://switchmod.net",
+        "cms": "shopify",
+        "scrape": true
+    },
+    {
+        "vendorName": "TheKey.Company",
+        "vendorURL": "https://thekey.company",
+        "cms": "shopify",
+        "scrape": true
+    }
+]

@@ -1,6 +1,6 @@
 import sys, os, asyncio, json
 
-from shopify import shopify, crawl
+from ... import crawl
 
 companyName = 'Daily Clack'
 site = 'https://dailyclack.com'
