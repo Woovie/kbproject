@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #standard modules
-import json, asyncio, logging, os, logging
+import json, asyncio, logging, os, sys
 
 #My custom modules
 import baseVendors, baseCMS
@@ -8,26 +8,33 @@ import baseVendors, baseCMS
 #CMS list
 import cms.shopify.main
 
-vendors = []
+logFormat = '%(asctime)s %(levelname)s %(filename)s %(message)s'
+logDateFormat = '[%d-%m-%Y %H:%M:%S]'
 
-cms = []
+formatter = logging.Formatter(logFormat, datefmt=logDateFormat)
+fileHandler = logging.FileHandler('scraper.main.log', mode='w')
+stdoutHandler = logging.StreamHandler(sys.stdout)
 
-async def main():
-    logger.critical('test')
-    global vendors
-    global cms
-    vendors = await baseVendors.loadVendors()
-    cms = await baseCMS.loadCMS()
-    for vendor in vendors:
-        ven = baseVendors.vendor(vendor['vendorName'], vendor['vendorURL'], vendor['cms'], vendor['scrape'])#name, url, cms, active
+logger = logging.getLogger('scraperMain')
 
-logging.basicConfig(level=logging.ERROR,
-                    format='%(asctime)s %(levelname)s %(filename)s %(message)s',
-                    datefmt='[%d-%m-%Y %H:%M:%S]',
-                    filename='debug.log',
-                    filemode='w')
+fileHandler.setFormatter(formatter)
+stdoutHandler.setFormatter(formatter)
 
-logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-asyncio.run(main())
+logger.addHandler(fileHandler)
+logger.addHandler(stdoutHandler)
+
+vendors = []
+cms = []
+
+vendors = baseVendors.loadVendors()
+cms = baseCMS.loadCMS()
+
+def main():
+    logger.debug('main()')
+    for vendor in vendors:
+        ven = baseVendors.vendor(vendor['vendorName'], vendor['vendorURL'], vendor['cms'], vendor['scrape'])#name, url, cms, active
+        logger.debug(f"Loaded \"{ven.name}\" at \"{ven.url}\"")
+
+main()

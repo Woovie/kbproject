@@ -8,6 +8,6 @@ class vendor():
         self.cms = cms
         self.active = active
 
-async def loadVendors():
+def loadVendors():
     with open('vendors.json', 'r') as f:
         return json.load(f)
