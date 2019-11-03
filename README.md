@@ -1,9 +1,9 @@
 # kbproject
 An open source, free custom keyboard vendor and inventory repository
 
-Kanban
+Kanbans
 
-https://trello.com/b/8MnLk6bD/kbproject
+https://github.com/Woovie/kbproject/projects
 
 Research and documentation
 
