@@ -33,7 +33,7 @@
         "vendorName": "DESKHERO",
         "vendorURL": "https://www.deskhero.ca",
         "cms": "shopify",
-        "scrape": true
+        "scrape": false
     },
     {
         "vendorName": "Switchmod Keyboards",

@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 #standard modules
-import json, asyncio, logging, os, sys
+import json, asyncio, logging, os, sys, timeit
 
 #My custom modules
 import baseVendors, baseCMS
+from crawl import crawl
 
 #CMS list
-import cms.shopify.main
+from cms.shopify.main import shopify, loadProducts
 
 logFormat = '%(asctime)s %(levelname)s %(filename)s %(message)s'
 logDateFormat = '[%d-%m-%Y %H:%M:%S]'
@@ -31,10 +32,25 @@ cms = []
 vendors = baseVendors.loadVendors()
 cms = baseCMS.loadCMS()
 
+vendorObjects = []
+
 def main():
     logger.debug('main()')
     for vendor in vendors:
-        ven = baseVendors.vendor(vendor['vendorName'], vendor['vendorURL'], vendor['cms'], vendor['scrape'])#name, url, cms, active
-        logger.debug(f"Loaded \"{ven.name}\" at \"{ven.url}\"")
+        cms = None
+        if vendor['cms'] == 'shopify':
+            cms = shopify(vendor['vendorURL'])
+        ven = baseVendors.vendor(vendor['vendorName'], vendor['vendorURL'], cms, vendor['scrape'])#name, url, cms, active
+        vendorObjects.append(ven)
+    asyncio.run(parseVendors())
+
+async def parseVendors():
+    for vendor in vendorObjects:
+        if vendor.active:
+            logger.debug(f"Started {vendor.name} at {vendor.url}.")
+            await vendor.cms.parseStorePage(f"{vendor.url}{vendor.cms.firstURI}")
+            vendor.products = await loadProducts(vendor)
+            print(vendor.products)
+            logger.debug(f"Finished {vendor.name}, loaded {len(vendor.products)} products.")
 
 main()
