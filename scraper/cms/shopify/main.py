@@ -82,9 +82,12 @@ async def loadProducts(vendor):
             productArray['name'] = name
             image = None
             if (foundImage := product.find(class_='product-card__image')):
-                image = foundImage
+                image = foundImage.get('src')
             elif (foundImage := product.find(class_='grid-view-item__image')):
-                image = foundImage
+                if foundImage.name == 'img':
+                    width = 2048
+                    image = foundImage.get('data-src')
+                    print(image)
             else:
                 image = 'http://woovie.net/404.jpg'
             productArray['image'] = image
@@ -101,11 +104,12 @@ async def loadProducts(vendor):
                 stock = False
             if not price and not stock:# Not daily clack
                 priceItem = product.find(class_='price-item--regular').contents
-                if "Sold out" in priceItem:
+                if "Sold out" in priceItem[0]:
                     price = '0.00'
                     stock = False
                 else:
-                    price = priceItem
+                    priceFormat = re.compile("(\d{1,3}\,)?\d{1,3}(\.\d{2})?")
+                    price = priceFormat.match(priceItem[0])
                     stock = True
             productArray['price'] = price
             productArray['stock'] = stock
