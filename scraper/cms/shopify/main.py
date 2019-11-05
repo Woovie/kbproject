@@ -85,9 +85,7 @@ async def loadProducts(vendor):
                 image = foundImage.get('src')
             elif (foundImage := product.find(class_='grid-view-item__image')):
                 if foundImage.name == 'img':
-                    width = 2048
-                    image = foundImage.get('data-src')
-                    print(image)
+                    image = foundImage.get('data-src').format(width=2048)
             else:
                 image = 'http://woovie.net/404.jpg'
             productArray['image'] = image
