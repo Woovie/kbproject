@@ -1,4 +1,4 @@
-import configparser, bs4, logging
+import configparser, bs4, logging, re
 from crawl import crawl
 
 logger = logging.getLogger('scraperMain')
@@ -61,7 +61,7 @@ async def loadProducts(vendor):
     for product in vendor.cms.products:
         productArray = {}
         productClass = product.get('class')
-        if 'product-card' in productClass:
+        if 'product-card' in productClass:# Daily Clack, Little Keyboards, Teal Technik
             #URL
             url = None
             if product.name == 'a':
@@ -80,19 +80,48 @@ async def loadProducts(vendor):
                     name = product.find(class_=nameClass).contents[0]
                     break
             productArray['name'] = name
-        elif 'grid-product__wrapper' in productClass:
+            image = None
+            if (foundImage := product.find(class_='product-card__image')):
+                image = foundImage
+            elif (foundImage := product.find(class_='grid-view-item__image')):
+                image = foundImage
+            else:
+                image = 'http://woovie.net/404.jpg'
+            productArray['image'] = image
+            price = None
+            stock = None
+            if foundPrice := product.find(class_='product-card__price'):
+                if len(foundPrice.contents) == 3:
+                    price = foundPrice.contents[2]
+                else:
+                    price = foundPrice.contents[0]
+                stock = True
+            elif foundStock := product.find(class_='product-card__availability'):
+                price = '0.00'
+                stock = False
+            if not price and not stock:# Not daily clack
+                priceItem = product.find(class_='price-item--regular').contents
+                if "Sold out" in priceItem:
+                    price = '0.00'
+                    stock = False
+                else:
+                    price = priceItem
+                    stock = True
+            productArray['price'] = price
+            productArray['stock'] = stock
+        elif 'grid-product__wrapper' in productClass:#  iLumkb
             productArray['url'] = product.find('a').get('href')
             productArray['name'] = product.find(class_='grid-product__title').contents[0]
-        elif 'productitem' in productClass:
+        elif 'productitem' in productClass:# deskhero
             productArray['url'] = product.find('a').get('href')
             productArray['name'] = product.find(class_='productitem--title').a.contents[0]
-        elif 'grid-product__grid-item' in productClass:
+        elif 'grid-product__grid-item' in productClass:#TheKeyCompany
             productArray['url'] = product.find('a').get('href')
             productArray['name'] = product.find(class_='grid-product__title').contents[0]
-        elif 'product' in productClass:
+        elif 'product' in productClass:# MKUltra
             productArray['url'] = product.find('a').get('href')
             productArray['name'] = product.find(class_='product__title').a.contents[0]
-        elif 'product-grid-item' in productClass:
+        elif 'product-grid-item' in productClass:# Switchmod
             productArray['url'] = product.get('href')
             productArray['name'] = product.p.contents[0]
         #Name filtering should be done down here to remove characters like `\n` and spaces from the start and end of the name

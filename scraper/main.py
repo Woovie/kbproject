@@ -50,7 +50,6 @@ async def parseVendors():
             logger.debug(f"Started {vendor.name} at {vendor.url}.")
             await vendor.cms.parseStorePage(f"{vendor.url}{vendor.cms.firstURI}")
             vendor.products = await loadProducts(vendor)
-            print(vendor.products)
             logger.debug(f"Finished {vendor.name}, loaded {len(vendor.products)} products.")
 
 main()
