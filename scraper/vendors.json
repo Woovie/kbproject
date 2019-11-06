@@ -3,48 +3,63 @@
         "vendorName": "Daily Clack",
         "vendorURL": "https://dailyclack.com",
         "cms": "shopify",
-        "scrape": true
+        "scrape": true,
+        "currency": "USD"
     },
     {
         "vendorName": "Little Keyboards",
         "vendorURL": "https://littlekeyboards.com",
         "cms": "shopify",
-        "scrape": true
+        "scrape": true,
+        "currency": false
     },
     {
         "vendorName": "iLumkb",
         "vendorURL": "https://ilumkb.com",
         "cms": "shopify",
-        "scrape": true
+        "scrape": true,
+        "currency": "SGD"
     },
     {
         "vendorName": "Teal Technik",
         "vendorURL": "https://tealtechnik.com",
         "cms": "shopify",
-        "scrape": true
+        "scrape": true,
+        "currency": false
     },
     {
         "vendorName": "MKUltra Corporation",
         "vendorURL": "https://mkultra.click",
         "cms": "shopify",
-        "scrape": true
+        "scrape": true,
+        "currency": false
     },
     {
         "vendorName": "DESKHERO",
         "vendorURL": "https://www.deskhero.ca",
         "cms": "shopify",
-        "scrape": false
+        "scrape": true,
+        "currency": false
     },
     {
         "vendorName": "Switchmod Keyboards",
         "vendorURL": "https://switchmod.net",
         "cms": "shopify",
-        "scrape": true
+        "scrape": true,
+        "currency": false
     },
     {
         "vendorName": "TheKey.Company",
         "vendorURL": "https://thekey.company",
         "cms": "shopify",
-        "scrape": true
+        "scrape": true,
+        "currency": "USD"
+    },
+    {
+        "vendorName": "Prime Keyboards",
+        "vendorURL": "https://primekb.com",
+        "cms": "shopify",
+        "scrape": true,
+        "currency": "USB"
     }
 ]

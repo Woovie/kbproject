@@ -1,4 +1,5 @@
 import configparser, bs4, logging, re
+from csv import reader
 from crawl import crawl
 
 logger = logging.getLogger('scraperMain')
@@ -61,16 +62,21 @@ async def loadProducts(vendor):
     for product in vendor.cms.products:
         productArray = {}
         productClass = product.get('class')
-        if 'product-card' in productClass:# Daily Clack, Little Keyboards, Teal Technik
-            #URL
-            url = None
+        priceFormat = re.compile(r"(\d{1,3}\,){0,3}\d{1,3}(\.\d{2})?")
+        url = None
+        name = None
+        image = None
+        price = None
+        stock = None
+        # Daily Clack, Little Keyboards, Teal Technik
+        if 'product-card' in productClass:
+            # URL
             if product.name == 'a':
                 url = product.get('href')
             else:
                 url = product.find('a').get('href')
             productArray['url'] = url
-            #Name
-            name = None
+            # Name
             nameClasses = [
                 'product-card__name',
                 'product-card__title'
@@ -80,7 +86,7 @@ async def loadProducts(vendor):
                     name = product.find(class_=nameClass).contents[0]
                     break
             productArray['name'] = name
-            image = None
+            # Image
             if (foundImage := product.find(class_='product-card__image')):
                 image = foundImage.get('src')
             elif (foundImage := product.find(class_='grid-view-item__image')):
@@ -89,13 +95,12 @@ async def loadProducts(vendor):
             else:
                 image = 'http://woovie.net/404.jpg'
             productArray['image'] = image
-            price = None
-            stock = None
-            if foundPrice := product.find(class_='product-card__price'):
-                if len(foundPrice.contents) == 3:
-                    price = foundPrice.contents[2]
+            # Price and stock
+            if priceTag := product.find(class_='product-card__price'):
+                if len(priceTag.contents) == 3:
+                    price = priceTag.contents[2]
                 else:
-                    price = foundPrice.contents[0]
+                    price = priceTag.contents[0]
                 stock = True
             elif foundStock := product.find(class_='product-card__availability'):
                 price = '0.00'
@@ -106,26 +111,97 @@ async def loadProducts(vendor):
                     price = '0.00'
                     stock = False
                 else:
-                    priceFormat = re.compile("(\d{1,3}\,)?\d{1,3}(\.\d{2})?")
-                    price = priceFormat.match(priceItem[0])
+                    price = priceFormat.search(priceItem[0])
                     stock = True
             productArray['price'] = price
             productArray['stock'] = stock
-        elif 'grid-product__wrapper' in productClass:#  iLumkb
+        # iLumkb
+        elif 'grid-product__wrapper' in productClass:
+            # URL
             productArray['url'] = product.find('a').get('href')
+            # Name
             productArray['name'] = product.find(class_='grid-product__title').contents[0]
-        elif 'productitem' in productClass:# deskhero
+            # Image
+            productArray['image'] = product.find(class_='grid-product__image').get('src')
+            # Price and stock
+            priceTag = product.find(class_='grid-product__price')
+            if match := priceFormat.search(priceTag.contents[2]):
+                price = match[0]
+                stock = True
+            elif match := priceFormat.search(priceTag.contents[4]):
+                price = match[0]
+                stock = True
+            else:
+                price = "0.00"
+                stock = False
+            productArray['price'] = price
+            productArray['stock'] = stock
+        # DESKHERO
+        elif 'productitem' in productClass:
             productArray['url'] = product.find('a').get('href')
             productArray['name'] = product.find(class_='productitem--title').a.contents[0]
-        elif 'grid-product__grid-item' in productClass:#TheKeyCompany
+        # TheKeyCompany
+        elif 'grid-product__grid-item' in productClass:
+            # URL
             productArray['url'] = product.find('a').get('href')
+            # Name
             productArray['name'] = product.find(class_='grid-product__title').contents[0]
-        elif 'product' in productClass:# MKUltra
+            # Image
+            productArray['image'] = product.find(class_='grid-product__image').get('src')
+            # Price and stock
+            priceTag = product.find(class_='grid-product__price')
+            if priceTag:
+                price = priceFormat.search(priceTag.contents[0])[0]
+            else:
+                price = "0.00"
+            productArray['price'] = price
+            stockCheck = product.find(class_='grid-product__status-bar').contents
+            if "Sold Out" in stockCheck or "Coming Soon" in stockCheck:
+                stock = False
+            else:
+                stock = True
+            productArray['stock'] = stock
+        # MKUltra
+        elif 'product' in productClass:
+            # URL
             productArray['url'] = product.find('a').get('href')
+            # Name
             productArray['name'] = product.find(class_='product__title').a.contents[0]
-        elif 'product-grid-item' in productClass:# Switchmod
+            # Image
+            if imageClass := product.find(class_='product__image'):
+                if imageDataSrc := imageClass.get('data-src'):
+                    image = imageDataSrc.format(width=2048)
+            elif imageClass := product.find(class_='product__image-wrapper'):
+                image = imageClass.img.get('src')
+            productArray['image'] = image
+            # Price and stock
+            priceClass = product.find(class_='product__price')
+            if priceClass:
+                if len(priceClass.contents) == 1:
+                    price = priceFormat.search(priceClass.contents[0])[0]
+                else:
+                    price = priceFormat.search(priceClass.contents[2])[0]
+            productArray['price'] = price
+            stockClass = product.find(class_='sold-out-text')
+            if stockClass:
+                stock = False
+            else:
+                stock = True
+            price = 'product__price'
+            productArray['stock'] = stock
+        # Switchmod
+        elif 'product-grid-item' in productClass:
+            # URL
             productArray['url'] = product.get('href')
+            # Name
             productArray['name'] = product.p.contents[0]
-        #Name filtering should be done down here to remove characters like `\n` and spaces from the start and end of the name
+            # Image
+            productArray['image'] = product.find(class_='lazyload__image-wrapper').img.get('data-src').format(width=2048)
+            # Price and stock
+            productArray['price'] = priceFormat.search(product.find(class_='product-item--price').small.contents[0])[0]
+            productArray['stock'] = True if not product.find(class_='badge--sold-out') else False
+        else:
+            print("Big issues!")
+        # Name filtering should be done down here to remove characters like `\n` and spaces from the start and end of the name
         prodDict.append(productArray)
     return prodDict
