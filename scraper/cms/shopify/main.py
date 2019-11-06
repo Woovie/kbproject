@@ -111,7 +111,7 @@ async def loadProducts(vendor):
                     price = '0.00'
                     stock = False
                 else:
-                    price = priceFormat.search(priceItem[0])
+                    price = priceFormat.search(priceItem[0])[0]
                     stock = True
             productArray['price'] = price
             productArray['stock'] = stock

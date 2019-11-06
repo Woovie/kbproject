@@ -40,7 +40,7 @@ def main():
         cms = None
         if vendor['cms'] == 'shopify':
             cms = shopify(vendor['vendorURL'])
-        ven = baseVendors.vendor(vendor['vendorName'], vendor['vendorURL'], cms, vendor['scrape'])#name, url, cms, active
+        ven = baseVendors.vendor(vendor['vendorName'], vendor['vendorURL'], cms, vendor['scrape'], vendor['dataName'])#name, url, cms, active
         vendorObjects.append(ven)
     asyncio.run(parseVendors())
 
@@ -51,5 +51,7 @@ async def parseVendors():
             await vendor.cms.parseStorePage(f"{vendor.url}{vendor.cms.firstURI}")
             vendor.products = await loadProducts(vendor)
             logger.debug(f"Finished {vendor.name}, loaded {len(vendor.products)} products.")
-
+            with open(f"{vendor.dataName}.json", 'w') as outfile:
+                json.dump(vendor.products, outfile)
+            logger.debug(f"Wrote {vendor.name} data to {vendor.dataName}.json")
 main()

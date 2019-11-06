@@ -2,6 +2,7 @@
     {
         "vendorName": "Daily Clack",
         "vendorURL": "https://dailyclack.com",
+        "dataName": "dailyclack_com",
         "cms": "shopify",
         "scrape": true,
         "currency": "USD"
@@ -9,6 +10,7 @@
     {
         "vendorName": "Little Keyboards",
         "vendorURL": "https://littlekeyboards.com",
+        "dataName": "littlekeyboards_com",
         "cms": "shopify",
         "scrape": true,
         "currency": false
@@ -16,6 +18,7 @@
     {
         "vendorName": "iLumkb",
         "vendorURL": "https://ilumkb.com",
+        "dataName": "ilumkb_com",
         "cms": "shopify",
         "scrape": true,
         "currency": "SGD"
@@ -23,6 +26,7 @@
     {
         "vendorName": "Teal Technik",
         "vendorURL": "https://tealtechnik.com",
+        "dataName": "tealtechnik_com",
         "cms": "shopify",
         "scrape": true,
         "currency": false
@@ -30,6 +34,7 @@
     {
         "vendorName": "MKUltra Corporation",
         "vendorURL": "https://mkultra.click",
+        "dataName": "mkultra_click",
         "cms": "shopify",
         "scrape": true,
         "currency": false
@@ -37,6 +42,7 @@
     {
         "vendorName": "DESKHERO",
         "vendorURL": "https://www.deskhero.ca",
+        "dataName": "deskhero_ca",
         "cms": "shopify",
         "scrape": true,
         "currency": false
@@ -44,6 +50,7 @@
     {
         "vendorName": "Switchmod Keyboards",
         "vendorURL": "https://switchmod.net",
+        "dataName": "switchmod_net",
         "cms": "shopify",
         "scrape": true,
         "currency": false
@@ -51,6 +58,7 @@
     {
         "vendorName": "TheKey.Company",
         "vendorURL": "https://thekey.company",
+        "dataName": "theykey_company",
         "cms": "shopify",
         "scrape": true,
         "currency": "USD"
@@ -58,6 +66,7 @@
     {
         "vendorName": "Prime Keyboards",
         "vendorURL": "https://primekb.com",
+        "dataName": "primekb_com",
         "cms": "shopify",
         "scrape": true,
         "currency": "USB"
