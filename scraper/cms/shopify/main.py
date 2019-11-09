@@ -5,7 +5,7 @@ from crawl import crawl
 logger = logging.getLogger('scraperMain')
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('config/cms.ini')
 
 # Vendor class
 # class vendor():
@@ -32,12 +32,14 @@ selectors = [
     'grid-product__grid-item',
     'product',
     'product-grid-item'
+    'grid-view-item__link'
 ]
 
 class shopify():
     def __init__(self, url):
         self.products = []
         self.url = url
+        self.selector = None
         self.firstURI = config['shopify']['dataloc']
         self.productURI = config['shopify']['itemloc']
 
@@ -45,10 +47,14 @@ class shopify():
         resp = await crawl(url)
         resp = bs4.BeautifulSoup(resp, 'html.parser')
         selectTry = None
-        for selector in selectors:
-            selectTry = resp.find_all(class_=selector)
-            if len(selectTry) > 0:
-                break
+        if self.selector:
+            selectTry = resp.find_all(class_=self.selector)
+        else:
+            for selector in selectors:
+                selectTry = resp.find_all(class_=selector)
+                if len(selectTry) > 0:
+                    self.selector = selector
+                    break
         if selectTry:
             self.products.extend(selectTry)
             nextPage = resp.find(rel='next')
@@ -70,6 +76,7 @@ async def loadProducts(vendor):
         stock = None
         # Daily Clack, Little Keyboards, Teal Technik
         if 'product-card' in productClass:
+            logger.debug(f"{vendor.name} product-card")
             # URL
             if product.name == 'a':
                 url = product.get('href')
@@ -117,6 +124,7 @@ async def loadProducts(vendor):
             productArray['stock'] = stock
         # iLumkb
         elif 'grid-product__wrapper' in productClass:
+            logger.debug(f"{vendor.name} grid-product__wrapper")
             # URL
             productArray['url'] = product.find('a').get('href')
             # Name
@@ -138,10 +146,12 @@ async def loadProducts(vendor):
             productArray['stock'] = stock
         # DESKHERO
         elif 'productitem' in productClass:
+            logger.debug(f"{vendor.name} productitem")
             productArray['url'] = product.find('a').get('href')
             productArray['name'] = product.find(class_='productitem--title').a.contents[0]
         # TheKeyCompany
         elif 'grid-product__grid-item' in productClass:
+            logger.debug(f"{vendor.name} grid-product__grid-item")
             # URL
             productArray['url'] = product.find('a').get('href')
             # Name
@@ -163,6 +173,7 @@ async def loadProducts(vendor):
             productArray['stock'] = stock
         # MKUltra
         elif 'product' in productClass:
+            logger.debug(f"{vendor.name} product")
             # URL
             productArray['url'] = product.find('a').get('href')
             # Name
@@ -191,6 +202,7 @@ async def loadProducts(vendor):
             productArray['stock'] = stock
         # Switchmod
         elif 'product-grid-item' in productClass:
+            logger.debug(f"{vendor.name} product-grid-item")
             # URL
             productArray['url'] = product.get('href')
             # Name

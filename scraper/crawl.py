@@ -1,4 +1,5 @@
 import aiohttp
+from sys import exit
 
 async def crawl(url):
     async with aiohttp.ClientSession() as session:
@@ -6,4 +7,5 @@ async def crawl(url):
             if r.status == 200:
                 return await r.text()
             else:
-                raise ResponseError(f"[ERROR] GET {url} returned unexpected value: {r.status} {r.reason}, expected 200 OK")
+                print(f"[ERROR] GET {url} returned unexpected value: {r.status} {r.reason}, expected 200 OK")
+                exit()
