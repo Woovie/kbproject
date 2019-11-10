@@ -1,6 +1,6 @@
 [
     {
-        "cmsName": "shopify",
-        "scrapeEnabled": true
+        "name": "shopify",
+        "scrape": true
     }
 ]
