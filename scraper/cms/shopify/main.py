@@ -39,4 +39,7 @@ class Shopify():
             product_dict['vendor'] = self.vendor.uuid
             product_dict['uuid'] = uuid.uuid4()
             products.append(product_dict)
-        self.vendor.products = products
+        if self.vendor:
+            self.vendor.products = products
+        else:
+            logger.error(f"No vendor object available! Could not parse {self.url}.")
