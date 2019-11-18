@@ -7,6 +7,7 @@ class Vendor():
         self.url = vendor['url']
         self.scrape = vendor['scrape']
         self.dataname = vendor['dataname']
+        self.uuid = vendor['uuid']
         self.cms = None
 
 def load_vendors():
