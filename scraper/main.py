@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 # standard modules
-import json, asyncio, logging, sys, argparse
-from configparser import ConfigParser
+import json, asyncio, logging, sys, argparse, configparser
 
 # My custom modules
 from base_vendors import Vendor, load_vendors
 from base_cms import CMS
-from crawl import crawl
 
-config = ConfigParser()
+config = configparser.ConfigParser()
 config.read('config/cms.ini')
 
 # Description
@@ -40,7 +38,10 @@ logger = logging.getLogger('scraper_main')
 file_handler.setFormatter(formatter)
 stdout_handler.setFormatter(formatter)
 
-logger.setLevel(logging.DEBUG)
+if arguments.verbose:
+    logger.setLevel(logging.DEBUG)
+else:
+    logger.setLevel(logging.WARNING)
 
 logger.addHandler(file_handler)
 logger.addHandler(stdout_handler)
@@ -50,6 +51,8 @@ vendors = []
 vendors = load_vendors()
 
 vendor_objects = []
+
+products = []
 
 def main():
     logger.debug('main()')
@@ -73,4 +76,5 @@ async def parse_vendors():
         logger.debug(f"Loaded {vendor.name}. {len(vendor.cms.products)} products loaded. Parsing.")
         await vendor.cms.parse()
         logger.debug(f"Completed {vendor.name}. {len(vendor.products)} products parsed.")
+        print(vendor.products)
 main()
