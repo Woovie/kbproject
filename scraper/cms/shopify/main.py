@@ -1,8 +1,9 @@
-import configparser, logging, re, json
-from crawl import crawl
-from configparser import ConfigParser
+import configparser, logging, re, json, uuid
 
-config = ConfigParser()
+#My modules
+import crawl
+
+config = configparser.ConfigParser()
 config.read('config/cms.ini')
 
 logger = logging.getLogger('scraperMain')
@@ -35,5 +36,7 @@ class Shopify():
                 variant_dict['stock'] = variant['available']
                 variant_dict['price'] = variant['price']
                 product_dict['variants'].append(variant_dict)
+            product_dict['vendor'] = self.vendor.uuid
+            product_dict['uuid'] = uuid.uuid4()
             products.append(product_dict)
         self.vendor.products = products
