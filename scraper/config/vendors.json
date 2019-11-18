@@ -1,202 +1,201 @@
-[
-    {
-        "name": "Daily Clack",
-        "url": "https://dailyclack.com",
-        "dataname": "dailyclack_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": "USD"
-    },
-    {
-        "name": "Little Keyboards",
-        "url": "https://littlekeyboards.com",
-        "dataname": "littlekeyboards_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "iLumkb",
-        "url": "https://ilumkb.com",
-        "dataname": "ilumkb_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": "SGD"
-    },
-    {
-        "name": "Teal Technik",
-        "url": "https://tealtechnik.com",
-        "dataname": "tealtechnik_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "MKUltra Corporation",
-        "url": "https://mkultra.click",
-        "dataname": "mkultra_click",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "DESKHERO",
-        "url": "https://www.deskhero.ca",
-        "dataname": "deskhero_ca",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Switchmod Keyboards",
-        "url": "https://switchmod.net",
-        "dataname": "switchmod_net",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "TheKey.Company",
-        "url": "https://thekey.company",
-        "dataname": "theykey_company",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": "USD"
-    },
-    {
-        "name": "Prime Keyboards",
-        "url": "https://primekb.com",
-        "dataname": "primekb_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": "USB"
-    },
-    {
-        "name": "Keebio",
-        "url": "https://keeb.io",
-        "dataname": "keeb_io",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "SINGAKBD",
-        "url": "https://singakbd.com",
-        "dataname": "singakbd_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "KeBo Store",
-        "url": "https://kebo.store",
-        "dataname": "kebo_store",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Mekanisk",
-        "url": "https://mekanisk.co",
-        "dataname": "mekanisk_co",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Cannon Keys",
-        "url": "https://cannonkeys.com",
-        "dataname": "cannonkeys_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "SouthPaw Design",
-        "url": "https://southpawdesign.net",
-        "dataname": "southpawdesign_net",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Donut Cables",
-        "url": "https://donutcables.com",
-        "dataname": "donutcables_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Keyboardbelle",
-        "url": "https://keyboardbelle.com",
-        "dataname": "keyboardbelle_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Mountain Blocks",
-        "url": "https://mountainblocks.com",
-        "dataname": "mountainblocks_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Keyboard Treehouse",
-        "url": "https://keyboardtreehouse.com",
-        "dataname": "keyboardtreehouse_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Oh, Keycaps!",
-        "url": "https://ohkeycaps.com",
-        "dataname": "ohkeycaps_com",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "RGBKB.net",
-        "url": "https://rgbkb.net",
-        "dataname": "rgbkb_net",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "ApexKeyboards",
-        "url": "https://apexkeyboards.ca",
-        "dataname": "apexkeyboards_ca",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Kono Store",
-        "url": "https://kono.store",
-        "dataname": "kono_store",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "SpaceCat Design",
-        "url": "https://spacecat.design",
-        "dataname": "spacecat_design",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    },
-    {
-        "name": "Dixie Mech",
-        "url": "https://dixiemech.store",
-        "dataname": "dixiemech_store",
-        "cms": "shopify",
-        "scrape": true,
-        "currency": false
-    }
-]
+[{
+    "name": "Daily Clack",
+    "url": "https://dailyclack.com",
+    "dataname": "dailyclack_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": "USD",
+    "uuid": "cb2b2ae1-fa75-4c8a-bfd4-3785408807e5"
+}, {
+    "name": "Little Keyboards",
+    "url": "https://littlekeyboards.com",
+    "dataname": "littlekeyboards_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "dfb83083-cc41-4ac4-b33c-17ca747c6279"
+}, {
+    "name": "iLumkb",
+    "url": "https://ilumkb.com",
+    "dataname": "ilumkb_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": "SGD",
+    "uuid": "7689cccc-3fd4-4e81-ae2f-562ab8a9bce0"
+}, {
+    "name": "Teal Technik",
+    "url": "https://tealtechnik.com",
+    "dataname": "tealtechnik_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "3fb27cce-deb9-4120-af81-b0cb5d5b1027"
+}, {
+    "name": "MKUltra Corporation",
+    "url": "https://mkultra.click",
+    "dataname": "mkultra_click",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "d1b0c6b8-3517-4f28-9f3c-a18d7d656ea1"
+}, {
+    "name": "DESKHERO",
+    "url": "https://www.deskhero.ca",
+    "dataname": "deskhero_ca",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "3956670a-703a-4986-9188-2d75f9dc999c"
+}, {
+    "name": "Switchmod Keyboards",
+    "url": "https://switchmod.net",
+    "dataname": "switchmod_net",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "c11ea49a-e474-4b78-aa86-809f1a877dd3"
+}, {
+    "name": "TheKey.Company",
+    "url": "https://thekey.company",
+    "dataname": "theykey_company",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": "USD",
+    "uuid": "a3b391b2-c2f7-4ab5-a9b6-300bf526861c"
+}, {
+    "name": "Prime Keyboards",
+    "url": "https://primekb.com",
+    "dataname": "primekb_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": "USB",
+    "uuid": "c27e046e-2ad5-4824-ac9b-7fbbb5e1b026"
+}, {
+    "name": "Keebio",
+    "url": "https://keeb.io",
+    "dataname": "keeb_io",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "331b10dd-bfd3-4b29-9600-0663ae6f3449"
+}, {
+    "name": "SINGAKBD",
+    "url": "https://singakbd.com",
+    "dataname": "singakbd_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "aa2ae050-e206-4374-9a13-ca6f09bfea49"
+}, {
+    "name": "KeBo Store",
+    "url": "https://kebo.store",
+    "dataname": "kebo_store",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "111a25f5-8abb-4eb2-ab2f-9fd9cdf5b0c9"
+}, {
+    "name": "Mekanisk",
+    "url": "https://mekanisk.co",
+    "dataname": "mekanisk_co",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "713dc1e0-fd1a-4fe0-9414-2f1ca67c489d"
+}, {
+    "name": "Cannon Keys",
+    "url": "https://cannonkeys.com",
+    "dataname": "cannonkeys_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "2bef1763-df31-46c3-83f0-42cefa689421"
+}, {
+    "name": "SouthPaw Design",
+    "url": "https://southpawdesign.net",
+    "dataname": "southpawdesign_net",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "aa6fbe78-79c0-421d-8a7f-c5d3c0a509fb"
+}, {
+    "name": "Donut Cables",
+    "url": "https://donutcables.com",
+    "dataname": "donutcables_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "2e25dc05-6f8a-4e6f-b825-f9948e5166cd"
+}, {
+    "name": "Keyboardbelle",
+    "url": "https://keyboardbelle.com",
+    "dataname": "keyboardbelle_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "bf798cff-1abc-43c4-9920-869f4d6e1688"
+}, {
+    "name": "Mountain Blocks",
+    "url": "https://mountainblocks.com",
+    "dataname": "mountainblocks_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "e48e7490-5608-4889-84bf-ad162aaa48f8"
+}, {
+    "name": "Keyboard Treehouse",
+    "url": "https://keyboardtreehouse.com",
+    "dataname": "keyboardtreehouse_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "32c8d150-ac65-4ef6-84c7-a965ff191364"
+}, {
+    "name": "Oh, Keycaps!",
+    "url": "https://ohkeycaps.com",
+    "dataname": "ohkeycaps_com",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "0aa17603-39f4-4186-abe5-b4dbdd153da7"
+}, {
+    "name": "RGBKB.net",
+    "url": "https://rgbkb.net",
+    "dataname": "rgbkb_net",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "d4bc8e9d-3340-4741-82a6-de5837342078"
+}, {
+    "name": "ApexKeyboards",
+    "url": "https://apexkeyboards.ca",
+    "dataname": "apexkeyboards_ca",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "6b6470ce-8d09-4ca0-aabc-ebf9c377045d"
+}, {
+    "name": "Kono Store",
+    "url": "https://kono.store",
+    "dataname": "kono_store",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "f1b15192-ae48-4f35-b75e-3905a2d41a9d"
+}, {
+    "name": "SpaceCat Design",
+    "url": "https://spacecat.design",
+    "dataname": "spacecat_design",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "4520bf62-4c95-4eb5-918e-4b79e50c19f5"
+}, {
+    "name": "Dixie Mech",
+    "url": "https://dixiemech.store",
+    "dataname": "dixiemech_store",
+    "cms": "shopify",
+    "scrape": true,
+    "currency": false,
+    "uuid": "94adcef3-f143-4aa6-8c59-daf6dfe0cdce"
+}]
