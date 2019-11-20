@@ -1,6 +1,9 @@
-import json, crawl, vendormanage, elasticsearch, asyncio
+import configparser, json, crawl, vendormanage, elasticsearch, asyncio
 
-url = 'http://kbdb.site/elasticsearch/'
+config = configparser.ConfigParser()
+config.read('config/elastic.ini')
+
+url = config['elastic']['url']
 
 es = elasticsearch.ElasticSearch(url)
 vendors = vendormanage.load_vendors()
