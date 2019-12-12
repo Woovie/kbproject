@@ -13,3 +13,7 @@ class Vendor():
 def load_vendors():
     with open('config/vendors.json', 'r') as f:
         return json.load(f)
+
+def save_vendors(vendors):
+    with open('config/vendors.json', 'w') as f:
+        json.dump(vendors, f)
