@@ -1,0 +1,182 @@
+[
+    {
+        "vendor_name": "HappyKeys",
+        "vendor_url": "happykeys.io",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "NovelKeys",
+        "vendor_url": "novelkeys.xyz",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Project Keyboard",
+        "vendor_url": "store.projectkeyboard.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Dixie Mech",
+        "vendor_url": "dixiemech.store",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "SpaceCat",
+        "vendor_url": "spacecat.design",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "ApexKeyboards",
+        "vendor_url": "apexkeyboards.ca",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Kono",
+        "vendor_url": "kono.store",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "RGBKB.net",
+        "vendor_url": "rgbkb.net",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Oh, Keycaps!",
+        "vendor_url": "ohkeycaps.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Keyboard Treehouse",
+        "vendor_url": "keyboardtreehouse.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Firefly Keyboards",
+        "vendor_url": "fireflykeyboards.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "RAMA",
+        "vendor_url": "ramaworks.store",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Keyboardbelle",
+        "vendor_url": "keyboardbelle.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "SouthPaw Design",
+        "vendor_url": "southpawdesign.net",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Donut Cables",
+        "vendor_url": "donutcables.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Cannon Keys",
+        "vendor_url": "cannonkeys.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Mekanisk",
+        "vendor_url": "mekanisk.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "KEBO",
+        "vendor_url": "kebo.store",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "singakbd",
+        "vendor_url": "singakbd.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "PrimeKB",
+        "vendor_url": "primekb.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Keebio",
+        "vendor_url": "keeb.io",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "iLumkb",
+        "vendor_url": "ilumkb.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "TheKey.Company",
+        "vendor_url": "thekey.company",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Deskhero.ca",
+        "vendor_url": "deskhero.ca",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Teal Technik",
+        "vendor_url": "tealtechnik.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Daily Clack",
+        "vendor_url": "dailyclack.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Little Keyboards",
+        "vendor_url": "littlekeyboards.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "MKUltra Corporation",
+        "vendor_url": "mkultra.click",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Sentraq",
+        "vendor_url": "sentraq.com",
+        "cms": "shopify",
+        "scrape?": true
+    },
+    {
+        "vendor_name": "Switchmod Keyboards",
+        "vendor_url": "switchmod.net",
+        "cms": "shopify",
+        "scrape?": true
+    }
+]
