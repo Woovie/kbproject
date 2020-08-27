@@ -1,6 +1,5 @@
 import json
-import scraper.vendor as vendor
-import scraper.shopify as shopify
+import vendor
 
 class Vendors():
     def __init__(self, vendors_file: str):
