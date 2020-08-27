@@ -1,6 +1,6 @@
 [submodule "scraper"]
-	path = scraper
+	path = kbproject_scraper
 	url = git@github.com:Woovie/kbproject_scraper.git
 [submodule "vendor"]
-	path = vendor
+	path = kbproject_vendor
 	url = git@github.com:Woovie/kbproject_vendor.git
